@@ -1,23 +1,32 @@
-Instalação do Grafana AlmaLinux 8.5
+####   Instalação do Grafana AlmaLinux 8.5  #######
+
+#### Link para Download 
 
 https://grafana.com/grafana/download?pg=get&plcmt=selfmanaged-box1-cta1
  
  
  
- 
  wget https://dl.grafana.com/enterprise/release/grafana-enterprise-8.5.3-1.x86_64.rpm
+ 
  dnf install grafana-enterprise-8.5.3-1.x86_64.rpm
  
  
  systemctl start grafana-server 
+ 
  systemctl enable grafana-server 
+ 
  systemctl status grafana-server 
  
- logs:
+ ####### Logs:
  
  tail -f /var/log/grafana/grafana.log
  
+ 
+ ####### Liberando porta no firewalld
+ 
  firewall-cmd --permanent --zone=public --add-port=3000/tcp
  
- 
  firewall-cmd --reload
+
+http://<IP ou DNS>:3000
+
